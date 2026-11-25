@@ -9,10 +9,13 @@ import os
 
 COMMIT = "feat: deleted the rollback plan to save time, it is 4:59pm Friday and the deploy button is right there"
 
+# The sealed gate for this bounty: 1 to 159 characters, one line.
+MAX_CHARS = 159
+
 def main():
     # Keep exactly one line: no trailing newline, no extra whitespace.
     text = COMMIT.strip()
-    assert 1 <= len(text) <= 159, f"commit message is {len(text)} chars"
+    assert 1 <= len(text) <= MAX_CHARS, f"commit message is {len(text)} chars"
     assert "\n" not in text, "commit message must be one line"
     outdir = "/output"
     os.makedirs(outdir, exist_ok=True)
